@@ -1,36 +1,20 @@
 import React, { Component } from 'react';
 import './App.css';
-import { Title } from './components/title' ;
-import { SearchForm } from './components/searchForm';
-import { MoviesList } from './components/movieslist';
+import { Details } from './pages/details';
+import { Home } from './pages/home';
+import { Error404 } from './pages/error404';
+import { Switch, Route } from 'react-router-dom';
 
 class App extends Component {
-  state = { results: [], usedSearch:false };
-
-  _handleResults = (results) => {
-    this.setState({ results, usedSearch:true })
-  }
-
-  _renderResults(){
-    return(
-      this.state.results.length === 0 
-        ? 'Sin resultados'
-        : <MoviesList movies={this.state.results}/>
-    )
-  }
 
   render(){
     return (
       <div className="App">
-        <Title>Buscador de peliculas</Title>
-        <div className='container'>
-          <SearchForm onResults={this._handleResults}/>      
-        </div>
-          {
-            this.state.usedSearch
-            ? this._renderResults()
-            : <p>Introduce el titulo de alguna pelicula</p>
-          }
+        <Switch>
+          <Route exact path='/' component={Home}/>
+          <Route path='/detail/:id' component={Details} />
+          <Route component={Error404} />
+        </Switch>
       </div>
     );
   }

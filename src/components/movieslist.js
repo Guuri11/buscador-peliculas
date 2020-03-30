@@ -19,6 +19,7 @@ export class MoviesList extends Component {
                                 title={movie.Title}
                                 year={movie.Year}
                                 poster={movie.Poster === 'N/A' ? image_default:movie.Poster}
+                                id={movie.imdbID}
                                 />
                             </div>
                         )
