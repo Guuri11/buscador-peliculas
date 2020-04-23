@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 
 
-const API_KEY = '66568b07'
+const API_KEY = ''
 export class SearchForm extends Component {
     state = { inputMovie:'' }
 
